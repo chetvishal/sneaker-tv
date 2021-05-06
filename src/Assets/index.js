@@ -1,0 +1,10 @@
+export { ReactComponent as Close } from './close.svg';
+export { ReactComponent as Hamburger } from './hamburger.svg';
+export { ReactComponent as Tv } from './tv.svg';
+export { ReactComponent as Pencil } from './pencil.svg';
+export { ReactComponent as Dustbin } from './dustbin.svg';
+export { ReactComponent as Tick } from './tick-sign.svg';
+export { ReactComponent as ExternalLInk } from './external-link.svg';
+export { ReactComponent as Heart } from './heart.svg';
+export { ReactComponent as PlayList } from './video-playlist.svg';
+export { ReactComponent as HeartFilled } from './heart-filled.svg';

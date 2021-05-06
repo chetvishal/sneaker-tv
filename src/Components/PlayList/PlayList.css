@@ -1,0 +1,26 @@
+@import url('../CSS/svg-icon.css');
+@import url('../CSS/form.css');
+
+.playlist { 
+    /* border: 1px solid black; */
+    padding: 1rem;
+    text-align: center;
+    margin: 0.4rem 0;
+}
+
+.playlist-info .toggle-input{
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.toggle-input input {
+    background-color: inherit;
+}
+
+.playlist-info-logo {
+    margin-left: 1rem;
+    display: flex;
+}
+

@@ -1,0 +1,66 @@
+@import url("../../CSS/form.css");
+@import url("../../CSS/button.css");
+@import url("../../CSS/background-colors.css");
+@import url("../../CSS/text-utilities.css");
+
+.addToPlayList-modal-body {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  /* display: none; */
+  z-index: 20;
+}
+
+.addToPlayList-modal {
+  position: absolute;
+  top: 25%;
+  border: 0.5px solid transparent;
+  background-color: white;
+  max-width: 240px;
+  min-height: 200px;
+  max-height: 540px;
+  margin: 0px auto;
+  left: 0;
+  right: 0;
+  padding: 0.8rem;
+  box-sizing: border-box;
+}
+
+.addToPlayList-modal hr {
+  margin-left: -0.8rem;
+  margin-right: -0.8rem;
+  color: #e8e8e8;
+  border-style: solid;
+}
+
+.close-modal {
+  display: flex;
+  justify-content: space-between;
+}
+
+.playlist-list {
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.playlist-name {
+  margin-left: 1rem;
+}
+
+.playlist-item {
+  margin: 0 0 1rem;
+}
+
+.modal-input {
+  max-width: 11rem;
+  background-color: transparent;
+  font-size: 0.9rem;
+}
+
+.create-playlist-btn {
+  text-align: right;
+}
