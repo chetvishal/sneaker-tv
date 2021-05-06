@@ -14,7 +14,7 @@ export const DataContextProvider =({children})=> {
         // dispatch({type: 'ADD_VIDEOS', payload:videos });
 
         async function getData() {
-            await axios.get('http://localhost:8000/videos').then((resp) => {
+            await axios.get('https://salty-headland-57268.herokuapp.com/videos').then((resp) => {
                 console.log('from context', resp)
                 dispatch({ type: 'ADD_VIDEOS', payload: resp.data.videos });
             }).catch(err => alert('failed to fetch data from server: ', err));
