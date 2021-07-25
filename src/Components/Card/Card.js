@@ -1,20 +1,18 @@
 import React from 'react';
-import './card.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import styles from './card.module.css';
 import { Link } from 'react-router-dom';
-export const Card = ({data}) => {
+export const Card = ({ data }) => {
 
     return (
         <Link to={`/video/${data.vidId}`} style={{ textDecoration: "none", color: "inherit" }}>
-            <div class="card-small">
-                <div class="card-small-image">
-                    <img src={`https://img.youtube.com/vi/${data.vidId}/maxresdefault.jpg`} alt="" />
+            <div className={styles.cardSmall}>
+                <div className={styles.cardSmall__imageContainer}>
+                    <img src={`https://img.youtube.com/vi/${data.vidId}/maxresdefault.jpg`} alt="" className={styles.cardSmall__image} />
                 </div>
-                <div class="card-small-content">
+                <div className={styles.cardSmall__content}>
                     <div>
-                        <span class="card-small-title">{data.title}</span>
-                        <span className="card-small-sub-heading">{data.youtuber}</span>
+                        <span className={styles.cardSmall__title}>{data.title}</span>
+                        <span className={styles.cardSmall__subHeading}>{data.youtuber}</span>
                     </div>
                 </div>
             </div>

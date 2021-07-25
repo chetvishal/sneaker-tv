@@ -1,4 +1,4 @@
-import './PlayVideo.css';
+import styles from './PlayVideo.module.css';
 import { useState } from 'react';
 import {Heart, PlayList, HeartFilled} from '../../Assets/index';
 import { useParams } from 'react-router-dom';
@@ -28,20 +28,24 @@ export const PlayVideo = () => {
 
     return (
         title === false ?
-            <img src={Loading} /> :
-            <div className="video-player">
+            <img src={Loading} alt="loading"/> :
+            <div className={styles.videoPlayer}>
 
-                <div className="iframe-container">
+                <div className={styles.iframe_container}>
                     <iframe
-                        src={`https://www.youtube.com/embed/${id}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen allow="fullscreen"></iframe>
+                        src={`https://www.youtube.com/embed/${id}`} 
+                        title="YouTube video player" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" 
+                        allowfullscreen 
+                        ></iframe>
                 </div>
-                <div className="video-info">
+                <div className={styles.videoInfo}>
                     <span className="util-heading-medium">{title}</span>
-                    <div className="info-box">
-                        <div className="user-info">
+                    <div className={styles.videoInfo__box}>
+                        <div className={styles.videoInfo__userInfo}>
                             <span>{youtuber}</span>
                         </div>
-                        <div className="actions">
+                        <div className={styles.actions}>
                             {
                                 checkLikedVideo(id) ?
                                     <HeartFilled style={{ width: "1.3rem", fill: "#ed4956", cursor: "pointer" }} onClick={() => dispatch({ type: 'REMOVE_FROM_LIKED_VIDEOS', payload: id })} />

@@ -1,9 +1,4 @@
-@import url("../../CSS/form.css");
-@import url("../../CSS/button.css");
-@import url("../../CSS/background-colors.css");
-@import url("../../CSS/text-utilities.css");
-
-.addToPlayList-modal-body {
+.addToPlayList {
   position: fixed;
   left: 0;
   top: 0;
@@ -14,7 +9,7 @@
   z-index: 20;
 }
 
-.addToPlayList-modal {
+.addToPlayList__modal {
   position: absolute;
   top: 25%;
   border: 0.5px solid transparent;
@@ -29,38 +24,38 @@
   box-sizing: border-box;
 }
 
-.addToPlayList-modal hr {
+.addToPlayList__modal hr {
   margin-left: -0.8rem;
   margin-right: -0.8rem;
   color: #e8e8e8;
   border-style: solid;
 }
 
-.close-modal {
+.addToPlayList__modalHeading {
   display: flex;
   justify-content: space-between;
 }
 
-.playlist-list {
+.addToPlayList__modalList {
   text-align: left;
   max-height: 300px;
   overflow-y: auto;
 }
 
-.playlist-name {
+.addToPlayList__modalItemName {
   margin-left: 1rem;
 }
 
-.playlist-item {
+.addToPlayList__modalItem {
   margin: 0 0 1rem;
 }
 
-.modal-input {
+.addToPlaylist__input {
   max-width: 11rem;
   background-color: transparent;
   font-size: 0.9rem;
 }
 
-.create-playlist-btn {
+.addToPlaylist__button {
   text-align: right;
 }

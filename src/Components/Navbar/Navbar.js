@@ -1,38 +1,43 @@
 import React, { useRef } from 'react';
-import './navbar.css';
+import styles from './navbar.module.css';
 import '../CSS/badge.css';
-import {Hamburger, Tv} from '../../Assets/index';
+import { Hamburger, Tv } from '../../Assets/index';
 import { Link } from 'react-router-dom';
 
 export const Navbar = ({ setSearchTxt }) => {
 
     return (
 
-        <header>
-            <nav id="menuToggle">
+        <header className={styles.navbar}>
+            <nav id={styles.toggleMenu}>
 
-                <input type="checkbox" id="nav-toggle" />
+                <input type="checkbox" id={styles.toggleMenu__toggle} />
 
-                <label className="nav-toggle-label">
-                    <label htmlFor="nav-toggle" className="nav-toggle">
-                        <span className="hamburger">
-                            <Hamburger className="bars" />
+                <label className={styles.toggleMenu__toggleLabel}>
+                    <label htmlFor={styles.toggleMenu__toggle}>
+                        <span className={styles.toggleMenu__haburgerIcon}>
+                            <Hamburger />
                         </span>
                     </label>
-                    <div className="logo">
-                        <span className="logo-text">Sneaker.</span>
-                        <span><Tv style={{ width: "4rem", height: "4rem", fill: "#909090", cursor: "pointer" }} className="logo-icon" /></span>
+                    <div className={styles.navbar__logo}>
+                        <span className={styles.navbar__logoText}>Sneaker.</span>
+                        <span><Tv
+                            style={{ width: "4rem", height: "4rem", fill: "#909090", cursor: "pointer" }}
+                            className={styles.navbar__logoIcon}
+                        /></span>
                     </div>
 
                 </label>
-                <ul className="menu">
+                <ul className={styles.navbar__menu}>
                     <li>
-                        <input type="text" onChange={e => setSearchTxt(()=>e.target.value)} className="nav-inputbox" placeholder="Search "
+                        <input
+                            type="text"
+                            onChange={e => setSearchTxt(() => e.target.value)}
                             placeholder="Search"
                         />
                     </li>
-                    <Link to="/"><li>Home</li></Link>
-                    <Link to="/library"><li>Library</li></Link>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/library">Library</Link></li>
                 </ul>
             </nav>
         </header>

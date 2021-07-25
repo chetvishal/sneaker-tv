@@ -1,5 +1,4 @@
-@import url('../CSS/svg-icon.css');
-@import url('../CSS/form.css');
+
 
 .playlist { 
     /* border: 1px solid black; */
@@ -8,19 +7,21 @@
     margin: 0.4rem 0;
 }
 
-.playlist-info .toggle-input{
+.playlist__info  .playlist__input{
     /* border: 1px solid black; */
     display: flex;
     justify-content: center;
     flex-direction: row;
 }
 
-.toggle-input input {
-    background-color: inherit;
-}
-
-.playlist-info-logo {
+ .playlist__logo{
     margin-left: 1rem;
     display: flex;
 }
+
+.playlist__input input {
+    background-color: inherit;
+}
+
+
 

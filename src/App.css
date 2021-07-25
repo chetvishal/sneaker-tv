@@ -1,3 +1,9 @@
+@import url("./Components/CSS/form.css");
+@import url("./Components/CSS/button.css");
+@import url("./Components/CSS/background-colors.css");
+@import url("./Components/CSS/text-utilities.css");
+@import url('./Components/CSS/svg-icon.css');
+
 .App {
   text-align: center;
 }

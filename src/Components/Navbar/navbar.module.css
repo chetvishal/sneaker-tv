@@ -1,0 +1,93 @@
+.navbar{
+  background-color: white;
+  position: sticky;
+  top: 0px;
+  z-index: 23;
+  width: 100%;
+}
+
+#toggleMenu {
+  display: flex;
+  flex-direction: column;
+}
+
+
+ .toggleMenu__haburgerIcon{
+  position: absolute;
+  left: 1rem;
+  top: 35%;
+  cursor: pointer;
+}
+
+#toggleMenu__toggle{
+  display: none;
+}
+
+#toggleMenu__toggle:checked ~ .navbar__menu {
+  display: flex;
+  flex-direction: column;
+  transform: translateX(0);
+}
+
+.toggleMenu__toggleLabel{
+  display: flex;
+  position: relative;
+  padding: 1rem;
+  justify-content: center;
+  height: 40px;
+  align-items: center;
+}
+
+ .navbar__menu{
+  /* display: none; */
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 0px;
+  padding: 1.3rem;
+  min-width: 15rem;
+  min-height: 100%;
+  position: fixed;
+  top: 4.5rem;
+  z-index: 10;
+  box-shadow: rgb(0 0 0 / 16%) 0px 12px 12px;
+
+  transform: translateX(-281.6px);
+  transition-property: translateX 1s;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+}
+
+
+.navbar__menu li {
+  list-style: none;
+  text-align: left;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.navbar__menu a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar__logo{
+  display: flex;
+  align-items: center;
+}
+
+ .navbar__logoText{
+  margin-right: -7px;
+  color: #5b4dd4;
+  /* color: #3dc3f5; */
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+.navbar__logoIcon{
+  fill: #3dc3f5;
+}
+
+

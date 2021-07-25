@@ -1,4 +1,4 @@
-import './PlayList.css';
+import styles from './PlayList.module.css';
 import { Card } from '../Card/Card';
 import {Pencil, Dustbin, Tick, ExternalLInk} from '../../Assets/index'
 import { useState } from 'react';
@@ -35,13 +35,13 @@ export const PlayList = ({ data }) => {
     const playlist = filterPlayListVideo(videos, list);
 
     return (
-        <div className="playlist">
-            <div className="playlist-info">
+        <div className={styles.playlist}>
+            <div className={styles.playlist__info}>
                 {
                     toggleInput ?
-                        <div className="toggle-input">
+                        <div className={styles.playlist__input}>
                             <h2 style={{ marginLeft: "1rem" }}>{name}</h2>
-                            <div className="playlist-info-logo" style={{ display: defaultPlayList ? "none" : "" }}>
+                            <div className={styles.playlist__logo} style={{ display: defaultPlayList ? "none" : "" }}>
                                 <Pencil className="svg-icon" onClick={handleToggleInput} />
                                 <ExternalLInk className="svg-icon" style={{ marginLeft: "1rem", height: "32px", width: "21px" }} 
                                     onClick={() => navigate(`/library/${id}`)}
@@ -49,22 +49,22 @@ export const PlayList = ({ data }) => {
                             </div>
                         </div>
                         :
-                        <div className="toggle-input">
+                        <div className={styles.playlist__input}>
                             <input
                                 type="text"
                                 placeholder="Title"
-                                class="input-styled"
+                                className="input-styled"
                                 defaultValue={name}
                                 onChange={handleInputChange}
                             />
-                            <div className="playlist-info-logo" style={{ display: defaultPlayList ? "none" : "" }}>
+                            <div className={styles.playlist__logo} style={{ display: defaultPlayList ? "none" : "" }}>
                                 <Tick className="svg-icon" onClick={handleChangeNameBtn} id={id} />
                                 <Dustbin className="svg-icon" onClick={handleDeleteBtn} style={{ marginLeft: "1rem" }} />
                             </div>
                         </div>
                 }
             </div>
-            <div className="playlist-videos">
+            <div className={styles.playlist__videos}>
                 {playlist.map(item => {
                     return <Card data={item} />
                 })}

@@ -1,4 +1,4 @@
-import './PlaylistPg.css';
+import styles from './PlaylistPg.module.css';
 import { Card } from '../../Components/index';
 import {Pencil, Dustbin, Tick} from '../../Assets/index';
 import { useState } from 'react';
@@ -36,7 +36,7 @@ export const PlaylistPg = () => {
         const data = [];
         videoList.map(i => {
             const findItem = PlayListIdList.find(item => item === i.vidId)
-            if (findItem) { data.push(i) } else return
+            if (findItem) { data.push(i) } else return 1
         })
         return data;
     }
@@ -49,34 +49,34 @@ export const PlaylistPg = () => {
 
     return (
         playlist.length === 0 ?
-            <img src={Loading} /> :
-            <div className="playlist">
-                <div className="playlist-info">
+            <img src={Loading} alt="loading"/> :
+            <div className={styles.playlist}>
+                <div className={styles.playlist_info}>
                     {
                         toggleInput ?
-                            <div className="toggle-input">
+                            <div className={styles.toggle_input}>
                                 <h2 style={{ marginLeft: "1rem" }}>{name}</h2>
-                                <div className="playlist-info-logo" style={{ display: defaultPlayList ? "none" : "" }}>
+                                <div className={styles.playlist_info_logo} style={{ display: defaultPlayList ? "none" : "" }}>
                                     <Pencil className="svg-icon" onClick={handleToggleInput} />
                                 </div>
                             </div>
                             :
-                            <div className="toggle-input">
+                            <div className={styles.toggle_input}>
                                 <input
                                     type="text"
                                     placeholder="Title"
-                                    class="input-styled"
+                                    className="input-styled"
                                     defaultValue={name}
                                     onChange={handleInputChange}
                                 />
-                                <div className="playlist-info-logo" style={{ display: defaultPlayList ? "none" : "" }}>
+                                <div className={styles.playlist_info_logo} style={{ display: defaultPlayList ? "none" : "" }}>
                                     <Tick className="svg-icon" onClick={handleChangeNameBtn} id={id} />
                                     <Dustbin className="svg-icon" onClick={handleDeleteBtn} style={{ marginLeft: "1rem" }} />
                                 </div>
                             </div>
                     }
                 </div>
-                <div className="playlist-videos">
+                <div className={styles.playlist_videos}>
                     {playlist.map(item => {
                         return <Card data={item} />
                     })}

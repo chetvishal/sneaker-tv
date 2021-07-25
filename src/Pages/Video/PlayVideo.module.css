@@ -1,17 +1,17 @@
 @import url('../../Components/CSS/text-utilities.css');
 
-.video-player {
+.videoPlayer {
     height: 100vh;
     position: relative;
 }
 
-.iframe-container{
+.iframe_container{
     position: relative;
     max-width: 95%;
     height: 45%;
     margin: 0.5rem auto;
   }
-  .iframe-container iframe{
+  .iframe_container iframe{
     position: absolute;
     top:0;
     left: 0;
@@ -21,7 +21,7 @@
   }
 
   /* VIDEO INFO SECTION */
-  .video-info {
+  .videoInfo {
       text-align: left;
       max-width: 95%;
       margin: 1rem auto;
@@ -31,7 +31,7 @@
       justify-content: space-between;
   }
 
-  .info-box {
+  .videoInfo__box{
       display: flex;
       justify-content: space-between;
       margin: 0.5rem 0;
@@ -45,12 +45,12 @@
   }
 
   @media (min-width: 960px) {
-      .iframe-container {
+      .iframe_container {
           width: 960px;
           height: 540px;
       }
 
-      .video-info {
+      .videoInfo {
         text-align: left;
         width: 960px;
         margin: 1rem auto;

@@ -2,7 +2,7 @@
 @import url("../CSS/text-utilities.css");
 
 /* SMALL CARD */
-.card-small {
+.cardSmall {
   display: inline-flex;
   border: 0.5px solid transparent;
   flex-direction: column;
@@ -20,11 +20,11 @@
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 } */
 
-.card-small-image {
+.cardSmall__imageContainer {
   position: relative;
 }
 
-.card-small-image img {
+.cardSmall__image {
     height: auto;
     margin: 0;
     max-width: 100%;
@@ -32,7 +32,7 @@
     border-radius: 8px;
   }
 
-.card-small-content {
+.cardSmall__content {
   padding: 10px 5px 20px;
   display: flex;
   flex-direction: row;
@@ -40,12 +40,12 @@
   text-align: left;
 }
 
-.card-small-content h4 {
+.cardSmall__content h4 {
   margin: 0px 0px 5px;
   padding: 0 1rem;
 }
 
-.card-small-title {
+.cardSmall__title {
   /* display: block;
   margin: 0px 0px 8px;
   padding: 0 0rem;
@@ -68,11 +68,11 @@
 
 }
 
-.card-small-sub-heading {
+.cardSmall__subHeading {
     font-size: 0.75rem;
 }
 
-.card-small-content p {
+.cardSmall__content p {
   margin: 0;
   padding: 0 0rem;
   line-height: 1rem;

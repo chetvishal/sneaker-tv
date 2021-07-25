@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './AddToPlayList.css';
+import styles from './AddToPlayList.module.css';
 import {  Close } from '../../../Assets/index';
 import { useDataContext } from '../../../Context/DataContext';
 
@@ -28,28 +28,28 @@ export const AddToPlayList = ({ visibility, toggleVisibility, videoId }) => {
     }
 
     return (
-        <div className="addToPlayList-modal-body" style={{ display: visibility ? "" : "none" }} >
-            <div className="addToPlayList-modal">
-                <div className="close-modal">
+        <div className={styles.addToPlayList} style={{ display: visibility ? "" : "none" }} >
+            <div className={styles.addToPlayList__modal}>
+                <div className={styles.addToPlayList__modalHeading}>
                     <span>Save to...</span>
                     <Close style={{ width: "1.3rem", fill: "#909090", cursor: "pointer" }} onClick={toggleVisibility} />
                 </div>
                 <hr />
-                <div className="playlist-list">
+                <div className={styles.addToPlayList__modalList}>
                     {
                         playList && playList.map(item => {
 
                             const check = checkVideoInPlayList(item.list)
 
                             return (
-                                <div className="playlist-item">
+                                <div className={styles.addToPlayList__modalItem}>
                                     <input
                                         type="checkbox"
                                         id={item.id}
                                         onChange={handleAddToPlayList}
                                         checked={check}
                                     />
-                                    <span className="playlist-name">{item.name}</span>
+                                    <span className={styles.addToPlayList__modalItemName}>{item.name}</span>
                                 </div>
                             )
                         })
@@ -57,13 +57,13 @@ export const AddToPlayList = ({ visibility, toggleVisibility, videoId }) => {
 
                 </div>
                 <hr />
-                <div className="create-new-playlist">
-                    <input type="text" placeholder="Enter playlist name..." class="input-styled modal-input" onChange={handleInput} value={newPlayListName} />
-                    <div className="create-playlist-btn">
-                        <div class="btn btn-icon txt-primary"
+                <div className={styles.addToPlaylist__create}>
+                    <input type="text" placeholder="Enter playlist name..." className={`input-styled ${styles.addToPlaylist__input}`} onChange={handleInput} value={newPlayListName} />
+                    <div className={styles.addToPlaylist__button}>
+                        <div className="btn btn-icon txt-primary"
                             onClick={handleCreateNewPlayList}
                         >
-                            <i class="fas fa-plus"></i>
+                            <i className="fas fa-plus"></i>
                             CREATE
                         </div>
                     </div>

@@ -8,18 +8,18 @@
     margin: 0.4rem 0;
 }
 
-.playlist-info .toggle-input{
+.playlist_info .toggle_input{
     /* border: 1px solid black; */
     display: flex;
     justify-content: center;
     flex-direction: row;
 }
 
-.toggle-input input {
+.toggle_input input {
     background-color: inherit;
 }
 
-.playlist-info-logo {
+.playlist_info_logo {
     margin-left: 1rem;
     display: flex;
 }
