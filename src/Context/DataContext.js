@@ -24,14 +24,16 @@ export const DataContextProvider = ({ children }) => {
             dispatch({ type: 'ADD_VIDEOS_FROM_SERVER', payload: resp.data.videos });
         }).catch(err => alert('failed to fetch data from server: ', err));
 
-        await axios.get(`https://sneaker-tv-api.herokuapp.com/playlist/${userData.userId}`, {
-            headers: {
-                'Authorization': userData.token
-            }
-        }).then(resp => {
-            dispatch({ type: 'ADD_PLAYLIST_FROM_SERVER', payload: resp.data.data.playList });
-        })
-            .catch(err => console.log("error fetching playlist: ", err))
+        if (userData.userId !== "" && userData.token !== "") {
+            await axios.get(`https://sneaker-tv-api.herokuapp.com/playlist/${userData.userId}`, {
+                headers: {
+                    'Authorization': userData.token
+                }
+            }).then(resp => {
+                dispatch({ type: 'ADD_PLAYLIST_FROM_SERVER', payload: resp.data.data.playList });
+            })
+                .catch(err => console.log("error fetching playlist: ", err))
+        }
     }
 
     useEffect(() => {
