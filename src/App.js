@@ -19,7 +19,7 @@ function App() {
       <Navbar setSearchTxt={setSearchTxt} setHideMenu={setHideMenu} hideMenu={hideMenu} />
       <div onClick={toggleHideMenu}>
         <Routes>
-          <PrivateRoute path="/" element={<Home searchKeyword={searchTxt} toggleHideMenu={toggleHideMenu} />} />
+          <Route path="/" element={<Home searchKeyword={searchTxt} toggleHideMenu={toggleHideMenu} />} />
           <PrivateRoute path="/video/:id" element={<PlayVideo  />} />
           <PrivateRoute path="/library" element={<Library  />} />
           <PrivateRoute path="/library/:playlistId" element={<PlaylistPg  />} />
