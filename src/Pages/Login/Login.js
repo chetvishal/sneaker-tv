@@ -23,7 +23,8 @@ export const Login = () => {
             await loginUserWithCredentials(email, password)
                 .then((resp) => {
                     updateServer('LOGIN', resp)
-                    navigate(state?.from ? state.from : '/login')
+                    console.log("state.from: ", state.from)
+                    navigate(state?.from && state?.from !== "/video/:id" ? state.from : '/login')
                 }).catch((err) => {
                     setErrorText(err.message)
                 })
