@@ -1,13 +1,27 @@
 import { useState } from "react";
 import styles from './AddToPlayList.module.css';
-import {  Close } from '../../../Assets/index';
+import { Close } from '../../../Assets/index';
 import { useDataContext } from '../../../Context/DataContext';
 
 export const AddToPlayList = ({ visibility, toggleVisibility, videoId }) => {
 
     const [newPlayListName, setNewPlayListName] = useState("");
-    const { state, dispatch } = useDataContext();
+    const { state, updateServer } = useDataContext();
     const { playList } = state;
+    const defaultPlaylist = [
+        {
+            _id: "2",
+            name: "Watch Later",
+            list: [],
+            defaultPlayList: true
+        },
+        {
+            _id: "1",
+            name: "Liked Videos",
+            list: [],
+            defaultPlayList: true
+        },
+    ]
 
 
     const checkVideoInPlayList = list => list.find(item => item === videoId) ? true : false;
@@ -15,16 +29,28 @@ export const AddToPlayList = ({ visibility, toggleVisibility, videoId }) => {
     const handleInput = e => setNewPlayListName(() => e.target.value);
 
     const handleCreateNewPlayList = (e) => {
-        newPlayListName ?
-            dispatch({ type: "CREATE_NEW_PLAYLIST", payload: { name: newPlayListName, data: videoId } }) :
-            alert("Please enter playlist name.")
-        setNewPlayListName("")
+        console.log("e.target.name; ", e.target.name)
+        console.log("newPlaylistName: ", newPlayListName)
+        if (e.target.id === "1" || e.target.id === "2" || e.target.id === "3") {
+            e.target.id === "3" ?
+                updateServer('INITIALIZE_NEW_PLAYLIST', { newPlayListName: newPlayListName, videoId, defaultPlayList: true }) :
+                updateServer('INITIALIZE_NEW_PLAYLIST', { newPlayListName: e.target.name, videoId, defaultPlayList: true })
+
+            setNewPlayListName("")
+        } else {
+            newPlayListName ?
+                updateServer('CREATE_NEW_PLAYLIST', { newPlayListName, videoId })
+                :
+                alert("Please enter playlist name.")
+            setNewPlayListName("")
+        }
     }
 
     const handleAddToPlayList = (e) => {
         e.target.checked ?
-            dispatch({ type: 'ADD_TO_PLAYLIST', payload: { id: e.target.id, data: videoId } }) :
-            dispatch({ type: 'REMOVE_FROM_PLAYLIST', payload: { id: e.target.id, data: videoId } })
+            updateServer('ADD_TO_PLAYLIST', { playListId: e.target.id, videoId })
+            :
+            updateServer('REMOVE_FROM_PLAYLIST', { playListId: e.target.id, videoId })
     }
 
     return (
@@ -37,15 +63,15 @@ export const AddToPlayList = ({ visibility, toggleVisibility, videoId }) => {
                 <hr />
                 <div className={styles.addToPlayList__modalList}>
                     {
-                        playList && playList.map(item => {
+                        playList.length !== 0 ? playList.map(item => {
 
                             const check = checkVideoInPlayList(item.list)
 
                             return (
-                                <div className={styles.addToPlayList__modalItem}>
+                                <div className={styles.addToPlayList__modalItem} key={item._id}>
                                     <input
                                         type="checkbox"
-                                        id={item.id}
+                                        id={item._id}
                                         onChange={handleAddToPlayList}
                                         checked={check}
                                     />
@@ -53,6 +79,21 @@ export const AddToPlayList = ({ visibility, toggleVisibility, videoId }) => {
                                 </div>
                             )
                         })
+                            :
+                            defaultPlaylist.map(item => {
+                                return (
+                                    <div className={styles.addToPlayList__modalItem} key={item._id}>
+                                        <input
+                                            type="checkbox"
+                                            id={item._id}
+                                            name={item.name}
+                                            onChange={handleCreateNewPlayList}
+                                        // checked={check}
+                                        />
+                                        <span className={styles.addToPlayList__modalItemName}>{item.name}</span>
+                                    </div>
+                                )
+                            })
                     }
 
                 </div>
@@ -62,8 +103,8 @@ export const AddToPlayList = ({ visibility, toggleVisibility, videoId }) => {
                     <div className={styles.addToPlaylist__button}>
                         <div className="btn btn-icon txt-primary"
                             onClick={handleCreateNewPlayList}
+                            id={playList.length === 0 ? "3" : "djkaf"}
                         >
-                            <i className="fas fa-plus"></i>
                             CREATE
                         </div>
                     </div>

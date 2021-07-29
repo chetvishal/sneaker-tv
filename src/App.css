@@ -3,9 +3,14 @@
 @import url("./Components/CSS/background-colors.css");
 @import url("./Components/CSS/text-utilities.css");
 @import url('./Components/CSS/svg-icon.css');
+@import url('./Components/CSS/alert.css');
+@import url('./Components/CSS/badge.css');
+@import url('./Components/CSS/colors.css');
 
 .App {
   text-align: center;
+  position: relative;
+  min-height: 100vh;
 }
 
 .App-logo {

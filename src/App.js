@@ -1,22 +1,34 @@
 import './App.css';
-import {useState} from 'react';
-import { Navbar } from './Components/index';
-import {PlaylistPg, Library, PlayVideo, Home} from './Pages/index';
+import { useState } from 'react';
+import { Navbar,Footer } from './Components/index';
+import { PlaylistPg, Library, PlayVideo, Home, Login, User, Signup } from './Pages/index';
 import { Route, Routes } from 'react-router-dom';
+import { PrivateRoute } from './Api/PrivateRoute'
 
 function App() {
 
   const [searchTxt, setSearchTxt] = useState('');
+  const [hideMenu, setHideMenu] = useState(false)
+
+  const toggleHideMenu = () => {
+    setHideMenu(() => true)
+  }
 
   return (
     <div className="App">
-      <Navbar setSearchTxt={setSearchTxt}/>
-      <Routes>
-        <Route path="/" element={<Home searchKeyword={searchTxt}/>}/>
-        <Route path="/video/:id" element={<PlayVideo />} />
-        <Route path="/library" element={<Library />} />
-        <Route path="/library/:playlistId" element={<PlaylistPg />} />
-      </Routes>
+      <Navbar setSearchTxt={setSearchTxt} setHideMenu={setHideMenu} hideMenu={hideMenu} />
+      <div onClick={toggleHideMenu}>
+        <Routes>
+          <PrivateRoute path="/" element={<Home searchKeyword={searchTxt} toggleHideMenu={toggleHideMenu} />} />
+          <PrivateRoute path="/video/:id" element={<PlayVideo  />} />
+          <PrivateRoute path="/library" element={<Library  />} />
+          <PrivateRoute path="/library/:playlistId" element={<PlaylistPg  />} />
+          <PrivateRoute path="/user" element={<User  />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup  />} />
+        </Routes>
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-@import url('./colors.css');
+/* @import url('./colors.css'); */
 
 .btn{
     border: 0.2px solid transparent;
@@ -37,4 +37,20 @@
 .btn-float:hover{
     cursor:pointer;
     
+}
+
+.submit-button {
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    margin-inline: auto;
+    background-color: #fb641b;
+    margin-top: 2rem;
+    display: block;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor:pointer;
+    background-image: linear-gradient(90deg, hsla(197, 100%, 63%, 1) 0%, hsla(294, 100%, 55%, 1) 100%);
+    /* linear-gradient(90deg, hsla(197, 100%, 63%, 1) 0%, hsla(294, 100%, 55%, 1) 100%); */
+    /* linear-gradient(135deg, hsla(246, 62%, 57%, 1) 0%, hsla(360, 86%, 67%, 1) 100%); */
 }
