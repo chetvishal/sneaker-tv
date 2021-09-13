@@ -53,9 +53,19 @@ export const Login = () => {
                 </div>
                 <form >
                     <span className={`util-heading-small ${styles.loginInputText}`}>Username</span>
-                    <input type="text" className={styles.loginInput} onChange={e => setEmail(e.target.value)} />
+                    <input
+                        type="text"
+                        className={styles.loginInput}
+                        onChange={e => setEmail(e.target.value)}
+                        value={email}
+                    />
                     <span className={`util-heading-small ${styles.loginInputText}`}>Password</span>
-                    <input type="password" className={styles.loginInput} onChange={e => setPassword(e.target.value)} />
+                    <input
+                        type="password"
+                        className={styles.loginInput}
+                        onChange={e => setPassword(e.target.value)}
+                        value={password}
+                    />
                     <button
                         className="submit-button"
                         style={{ backgroundColor: "black" }}
@@ -65,7 +75,14 @@ export const Login = () => {
                     </button>
                 </form>
 
-
+                <span
+                    className="util-heading-small"
+                    style={{ textAlign: "center", cursor: 'pointer', marginTop: "1rem" }}
+                    onClick={() => {
+                        setEmail("Elon")
+                        setPassword("12345")
+                    }}
+                >Login as guest</span>
                 <span className="util-heading-small" style={{ color: "red", textAlign: "center" }}>{errorText}</span>
                 <span className={`util-heading-small ${styles.signUpLink}`}>
                     <Link to="/signup" className="nostyle">
