@@ -30,6 +30,21 @@ export const Login = () => {
         }
     }
 
+    const guestLogin = async (e) => {
+        e.preventDefault();
+        if (isUserLoggedIn) {
+            logoutUser()
+        } else {
+            await loginUserWithCredentials("Elon", "12345")
+                .then((resp) => {
+                    updateServer('LOGIN', resp)
+                    navigate(state?.from && state?.from !== "/video/:id" ? state.from : '/login')
+                }).catch((err) => {
+                    setErrorText(err.message)
+                })
+        }
+    }
+
     useEffect(() => {
         if (isUserLoggedIn) {
             navigate('/user')
@@ -78,9 +93,10 @@ export const Login = () => {
                 <span
                     className="util-heading-small"
                     style={{ textAlign: "center", cursor: 'pointer', marginTop: "1rem" }}
-                    onClick={() => {
+                    onClick={(e) => {
                         setEmail("Elon")
                         setPassword("12345")
+                        guestLogin(e)
                     }}
                 >Login as guest</span>
                 <span className="util-heading-small" style={{ color: "red", textAlign: "center" }}>{errorText}</span>
