@@ -4,7 +4,7 @@ import { DataReducer } from '../Reducer/DataReducer';
 import { useAuthContext } from './AuthContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
+import { ROOT_ENDPOINT } from '../Api/Api';
 
 const DataContext = createContext();
 
@@ -22,12 +22,12 @@ export const DataContextProvider = ({ children }) => {
     const { userDetails, setUserDetails } = useAuthContext();
 
     async function getData(userData = userDetails) {
-        await axios.get('https://sneaker-tv-api.herokuapp.com/videos').then((resp) => {
+        await axios.get(`${ROOT_ENDPOINT}/videos`).then((resp) => {
             dispatch({ type: 'ADD_VIDEOS_FROM_SERVER', payload: resp.data.videos });
         }).catch(err => alert('failed to fetch data from server: ', err));
 
         if (userData.userId !== "" && userData.token !== "") {
-            await axios.get(`https://sneaker-tv-api.herokuapp.com/playlist/${userData.userId}`, {
+            await axios.get(`${ROOT_ENDPOINT}/playlist/${userData.userId}`, {
                 headers: {
                     'Authorization': userData.token
                 }
@@ -46,7 +46,7 @@ export const DataContextProvider = ({ children }) => {
     const updateServer = async (action, payload) => {
         switch (action) {
             case 'CREATE_NEW_PLAYLIST': {
-                await axios.post(`https://sneaker-tv-api.herokuapp.com/playlist/${userDetails.userId}`, {
+                await axios.post(`${ROOT_ENDPOINT}/playlist/${userDetails.userId}`, {
                     name: payload.newPlayListName,
                     videoId: payload.videoId,
                     ...payload
@@ -79,7 +79,7 @@ export const DataContextProvider = ({ children }) => {
                 break;
             }
             case 'INITIALIZE_NEW_PLAYLIST': {
-                await axios.post(`https://sneaker-tv-api.herokuapp.com/playlist/${userDetails.userId}`, {
+                await axios.post(`${ROOT_ENDPOINT}/playlist/${userDetails.userId}`, {
                     name: payload.newPlayListName,
                     videoId: payload.videoId,
                     ...payload
@@ -101,7 +101,7 @@ export const DataContextProvider = ({ children }) => {
                 break;
             }
             case 'ADD_TO_PLAYLIST': {
-                await axios.post(`https://sneaker-tv-api.herokuapp.com/playlist/${userDetails.userId}/${payload.playListId}`, {
+                await axios.post(`${ROOT_ENDPOINT}/playlist/${userDetails.userId}/${payload.playListId}`, {
                     videoId: payload.videoId,
                 }, {
                     headers: {
@@ -122,7 +122,7 @@ export const DataContextProvider = ({ children }) => {
             }
 
             case 'REMOVE_FROM_PLAYLIST': {
-                await axios.delete(`https://sneaker-tv-api.herokuapp.com/playlist/${userDetails.userId}/${payload.playListId}`, {
+                await axios.delete(`${ROOT_ENDPOINT}/playlist/${userDetails.userId}/${payload.playListId}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': userDetails.token
@@ -142,7 +142,7 @@ export const DataContextProvider = ({ children }) => {
                 break;
             }
             case 'CHANGE_PLAYLIST_NAME': {
-                await axios.patch(`https://sneaker-tv-api.herokuapp.com/playlist/${userDetails.userId}/${payload.playListId}`, {
+                await axios.patch(`${ROOT_ENDPOINT}/playlist/${userDetails.userId}/${payload.playListId}`, {
 
                     newName: payload.newName
                 }, {
@@ -164,7 +164,7 @@ export const DataContextProvider = ({ children }) => {
                 break;
             }
             case 'DELETE_PLAYLIST': {
-                await axios.delete(`https://sneaker-tv-api.herokuapp.com/playlist/${userDetails.userId}`, {
+                await axios.delete(`${ROOT_ENDPOINT}/playlist/${userDetails.userId}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': userDetails.token

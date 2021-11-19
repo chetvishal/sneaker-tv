@@ -1,0 +1,1 @@
+export const ROOT_ENDPOINT = 'https://sneaker-tv-api.herokuapp.com';
