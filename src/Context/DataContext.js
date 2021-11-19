@@ -3,6 +3,8 @@ import { DataReducer } from '../Reducer/DataReducer';
 // import {videos} from '../Data/Data';
 import { useAuthContext } from './AuthContext';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
 
 const DataContext = createContext();
 
@@ -64,6 +66,9 @@ export const DataContextProvider = ({ children }) => {
                                 defaultPlayList: response.data.data.defaultPlayList
                             }
                         })
+                        toast.success("Created new playlist", {
+                            position: toast.POSITION.BOTTOM_LEFT
+                        });
 
                     } else {
                         throw Error
@@ -106,6 +111,9 @@ export const DataContextProvider = ({ children }) => {
                     if (response.status === 201) {
                         dispatch({ type: 'ADD_TO_PLAYLIST', payload: { _id: payload.playListId, data: payload.videoId } })
 
+                        toast.success("Added to playlist", {
+                            position: toast.POSITION.BOTTOM_LEFT
+                        });
                     } else {
                         throw Error
                     }
@@ -124,6 +132,9 @@ export const DataContextProvider = ({ children }) => {
                     if (response.status === 200) {
                         dispatch({ type: 'REMOVE_FROM_PLAYLIST', payload: { _id: payload.playListId, data: payload.videoId } }) //<-------------------------- code on reducer (id -> _id)
 
+                        toast.info("Video removed from playlist", {
+                            position: toast.POSITION.BOTTOM_LEFT
+                        });
                     } else {
                         throw Error
                     }
@@ -143,6 +154,9 @@ export const DataContextProvider = ({ children }) => {
                     if (response.status === 200) {
                         dispatch({ type: 'CHANGE_PLAYLIST_NAME', payload: { _id: payload.playListId, data: payload.newName } })
 
+                        toast.success("Playlist name successfully changed", {
+                            position: toast.POSITION.BOTTOM_LEFT
+                        });
                     } else {
                         throw Error
                     }
@@ -159,6 +173,10 @@ export const DataContextProvider = ({ children }) => {
                 }).then(response => {
                     if (response.status === 201) {
                         dispatch({ type: 'DELETE_PLAYLIST', payload: payload.playListId })
+
+                        toast.success("Playlist successfully deleted", {
+                            position: toast.POSITION.BOTTOM_LEFT
+                        });
 
                     } else {
                         throw Error
