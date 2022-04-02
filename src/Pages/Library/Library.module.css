@@ -1,0 +1,30 @@
+.empty__library {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.submitButton {
+  margin-bottom: 2rem;
+}
+
+.empty__libraryText {
+  display: block;
+  margin-top: 2rem;
+  margin-right: -7px;
+  /* color: #5b4dd4; */
+  color: #3dc3f5;
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+.empty__libraryImage {
+  width: 60%;
+}
+
+@media (min-width: 850px) {
+  .empty__libraryImage {
+    width: 30%;
+  }
+}

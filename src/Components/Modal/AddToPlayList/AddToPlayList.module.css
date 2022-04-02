@@ -1,0 +1,61 @@
+.addToPlayList {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  /* display: none; */
+  z-index: 20;
+}
+
+.addToPlayList__modal {
+  position: absolute;
+  top: 25%;
+  border: 0.5px solid transparent;
+  background-color: white;
+  max-width: 240px;
+  min-height: 200px;
+  max-height: 540px;
+  margin: 0px auto;
+  left: 0;
+  right: 0;
+  padding: 0.8rem;
+  box-sizing: border-box;
+}
+
+.addToPlayList__modal hr {
+  margin-left: -0.8rem;
+  margin-right: -0.8rem;
+  color: #e8e8e8;
+  border-style: solid;
+}
+
+.addToPlayList__modalHeading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addToPlayList__modalList {
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.addToPlayList__modalItemName {
+  margin-left: 1rem;
+}
+
+.addToPlayList__modalItem {
+  margin: 0 0 1rem;
+}
+
+.addToPlaylist__input {
+  max-width: 11rem;
+  background-color: transparent;
+  font-size: 0.9rem;
+}
+
+.addToPlaylist__button {
+  text-align: right;
+}
