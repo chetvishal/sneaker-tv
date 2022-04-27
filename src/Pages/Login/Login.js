@@ -14,12 +14,14 @@ export const Login = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loginBtnTxt, setLoginBtnText] = useState("LOGIN")
 
     const handleLogin = async (e) => {
         e.preventDefault();
         if (isUserLoggedIn) {
             logoutUser()
         } else {
+            setLoginBtnText("Logging In...")
             await loginUserWithCredentials(email, password)
                 .then((resp) => {
                     updateServer('LOGIN', resp)
@@ -35,6 +37,7 @@ export const Login = () => {
         if (isUserLoggedIn) {
             logoutUser()
         } else {
+            setLoginBtnText("Logging In...")
             await loginUserWithCredentials("Elon", "12345")
                 .then((resp) => {
                     updateServer('LOGIN', resp)
@@ -86,7 +89,7 @@ export const Login = () => {
                         style={{ backgroundColor: "black" }}
                         onClick={handleLogin}
                     >
-                        {isUserLoggedIn ? "LOGOUT" : 'LOGIN'}
+                        {isUserLoggedIn ? "LOGOUT" : loginBtnTxt}
                     </button>
                 </form>
 
