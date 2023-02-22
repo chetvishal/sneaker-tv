@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './Home.module.css'
-import { Card } from '../../Components/index';
+import { Card, Loader } from '../../Components/index';
 import { useDataContext } from '../../Context/DataContext';
-import Loading from '../../Assets/3.gif';
 
 export const Home = ({ searchKeyword }) => {
 
@@ -13,7 +12,12 @@ export const Home = ({ searchKeyword }) => {
         <div className={styles.home}>
             {
                 videos.length === 0 ?
-                    <img src={Loading} alt="loading" /> :
+                    <div style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)"
+                    }}><Loader /></div> :
                     videos.map((item, index) => {
                         return item.title.toLowerCase().includes(searchKeyword.toLowerCase()) ?
                             <Card data={item} key={item._id} /> : null
